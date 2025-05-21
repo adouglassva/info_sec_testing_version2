@@ -1,0 +1,1076 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<vbms_architecture>
+    <tenants>
+        <tenant>
+            <system_name>Veterans Benefits Management System (VBMS)</system_name>
+            <vasi>1728</vasi>
+            <emass_id>1021</emass_id>
+            <emass_system_name>Veterans Benefits Management Systems (VBMS) Cloud Assessing</emass_system_name>
+            <msr>915</msr>
+            <bih>N/A</bih>
+            <documentation_status>Final</documentation_status>
+            <submission_date>2023-09</submission_date>
+            <other_documentation>VBMS System Design Document</other_documentation>
+            <dodaf>VBMS Core Services, VBMS Awards, Ratings Services</dodaf>
+            <pocs>
+                <poc>
+                    <name>Jared Mrozinski</name>
+                    <role>Unknown</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>vbms-awards</app>
+                <app>vbms-rating</app>
+                <app>vbms-core</app>
+                <app>vbms-microservices</app>
+                <app>config-server</app>
+                <app>exam-mass-reassign-service</app>
+                <app>efolder-content-sync-service</app>
+                <app>discovery-server</app>
+                <app>spring-cloud-admin-server</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Benefits Security Services (BSS)</system_name>
+            <vasi>2985</vasi>
+            <emass_id>2047</emass_id>
+            <emass_system_name>BIP Security Service</emass_system_name>
+            <msr>2384</msr>
+            <bih>Benefits Security Service</bih>
+            <documentation_status>Final</documentation_status>
+            <submission_date>2024-09</submission_date>
+            <other_documentation />
+            <dodaf>Benefits Security Services</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-bss-iam-webagent</app>
+                <app>bip-bss-idpproxy</app>
+                <app>bip-bss-keycloak</app>
+                <app>bip-bss-policy-service</app>
+                <app>bip-bss-ssoe-proxy</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel>bip-support-bss</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Package Manager (PacMan)</system_name>
+            <vasi>2993</vasi>
+            <emass_id>2061</emass_id>
+            <emass_system_name>Package Manager</emass_system_name>
+            <msr>2395</msr>
+            <bih>Package Manager</bih>
+            <documentation_status>Final</documentation_status>
+            <submission_date>2024-09</submission_date>
+            <other_documentation>PacMan 4+1 Design</other_documentation>
+            <dodaf>Package Manager</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Ashlyn Boserup</name>
+                    <role>Package Manager ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-pacman-ui-legacy</app>
+                <app>bip-cbcm-mock</app>
+                <app>bip-pacman-legacy</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-Pacman</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Integrated Benefits Service (IBS)</system_name>
+            <vasi>2994</vasi>
+            <emass_id>2060</emass_id>
+            <emass_system_name>Integrated Benefits System</emass_system_name>
+            <msr>2391</msr>
+            <bih>Integrated Benefits Service</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>IBS 4+1 Design</other_documentation>
+            <dodaf>Integrated Benefit Services</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-ibs-batch-service</app>
+                <app>bip-ibs-fl-data-service</app>
+                <app>bip-ibs-fl-service</app>
+                <app>bip-ibs-icp-data-service</app>
+                <app>bip-ibs-icp-service</app>
+                <app>bip-ibs-ins-data-service</app>
+                <app>bip-ibs-ins-service</app>
+                <app>bip-ibs-ssa-service</app>
+                <app>bip-ibs-vet-data-service</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel>bip-support-birls</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Records Research Center (RRC)</system_name>
+            <vasi>2998</vasi>
+            <emass_id>2063</emass_id>
+            <emass_system_name>Records Research Center</emass_system_name>
+            <msr>2392</msr>
+            <bih>Records Research Center</bih>
+            <documentation_status>Final</documentation_status>
+            <submission_date>2024-09</submission_date>
+            <other_documentation>RRC 4+1 Design</other_documentation>
+            <dodaf>Records Research Center</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Ashlyn Boserup</name>
+                    <role>MRRC ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-rrc-email-service</app>
+                <app>bip-rrc-service</app>
+                <app>bip-rrc-sync</app>
+                <app>bip-rrc-ui</app>
+                <app>bip-vefs-rrc</app>
+            </tenant_apps>
+            <gui_links>https://rrc-ui-dev.dev.bip.va.gov/</gui_links>
+            <slack_channel>bip-support-rrc</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Pension Automation (PA)</system_name>
+            <vasi>2999</vasi>
+            <emass_id>2062</emass_id>
+            <emass_system_name>Pension Automation</emass_system_name>
+            <msr>2397</msr>
+            <bih>Pension Automation</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>PA 4+1 Design</other_documentation>
+            <dodaf>Pension Automation</dodaf>
+            <pocs>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Lisa Kenyon</name>
+                    <role>Pension ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-bgs-proxy</app>
+                <app>bip-claim-automator</app>
+                <app>bip-classifier</app>
+                <app>bip-dashboards</app>
+                <app>bip-event-injector</app>
+                <app>bip-pension-pacman-shim</app>
+                <app>elasticsearch</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Document Generator (DocGen)</system_name>
+            <vasi>3000</vasi>
+            <emass_id>2051</emass_id>
+            <emass_system_name>Document Generator</emass_system_name>
+            <msr>2398</msr>
+            <bih>Document Generator</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>DocGen 4+1 Design</other_documentation>
+            <dodaf>Document Generator</dodaf>
+            <pocs>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Doug James</name>
+                    <role>Letters and Documents ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Ellen McCarthy</name>
+                    <role>ADG ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-docgen-svc</app>
+                <app>bip-docgen-adg-svc</app>
+                <app>bip-adg-ui</app>
+                <app>bip-docgen-mgmt-svc</app>
+                <app>bip-docgen-mgmt-ui</app>
+                <app>bip-docgen-genstore</app>
+                <app>bip-docgen-letters-svc</app>
+                <app>bip-docgen-letters-ui</app>
+            </tenant_apps>
+            <gui_links>https://docgen-mgmt-ui-dev.dev.bip.va.gov/</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Common Functional APIs (CFAPI)</system_name>
+            <vasi>3004</vasi>
+            <emass_id>2048</emass_id>
+            <emass_system_name>Common Functional APIs</emass_system_name>
+            <msr>2403</msr>
+            <bih>Common Functional APIs</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>CFAPI 4+1 Design</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Lee Morris</name>
+                    <role>DBQ ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Jud Drinker</name>
+                    <role>VHA Notification ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Lisa Jefferies</name>
+                    <role>Military Service Data Info Modernization ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Angela Ferrari</name>
+                    <role>ADS ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Doug James</name>
+                    <role>Letters and Documents ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-cfapi-iler-api</app>
+                <app>bip-cfapi-vha-notification-api</app>
+                <app>bip-claim-automation-processor</app>
+                <app>bip-evidence-api</app>
+                <app>bip-idb-admin-api</app>
+                <app>bip-idb-api</app>
+                <app>bip-notes-api</app>
+                <app>bip-participant-api</app>
+                <app>bip-poa-api</app>
+                <app>bip-sdg-api</app>
+                <app>bip-str-assist-api</app>
+                <app>bip-trackeditem-api</app>
+                <app>bip-vbms-attribute-guide</app>
+                <app>bip-vbms-users-api</app>
+                <app>bip-veteran-api</app>
+                <app>bip-veteran-summary-panel-api</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel>bip-support-cfapi</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Exam Management (Exam Mgmt)</system_name>
+            <vasi>3005</vasi>
+            <emass_id>2053</emass_id>
+            <emass_system_name>VBMS Exam Management</emass_system_name>
+            <msr>2404</msr>
+            <bih>Exam Management</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>Exam Management 4+1 Design</other_documentation>
+            <dodaf>Exam Management</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Margaret Paraschos</name>
+                    <role>Exam Management ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps />
+            <gui_links>
+                <link>https://exam-mgmt-ui-dev.dev.bip.va.gov/exam-transaction-history/</link>
+                <link>https://exam-standard-data-ui-dev.dev.bip.va.gov</link>
+                <link>VRP UI DEV URL</link>
+            </gui_links>
+            <slack_channel>bip-support-exam-mgmt</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Work Queue (WORKQ)</system_name>
+            <vasi>3007</vasi>
+            <emass_id>2046</emass_id>
+            <emass_system_name>Work Queue</emass_system_name>
+            <msr>2402</msr>
+            <bih>Work Queue</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>NWQ v2 Solution, Work Queue Modernization</other_documentation>
+            <dodaf>Work Queue</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Leah Hardie</name>
+                    <role>NWQ ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Kelly Morgan</name>
+                    <role>Prior Transaction Routing ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Cameron Williams</name>
+                    <role>Work Queue Modernization ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vbms-fact-builder</app>
+                <app>bip-wm-reference-data-api</app>
+                <app>bip-work-queue-cdc-converter</app>
+                <app>bip-work-queue-sp</app>
+                <app>bip-nwq-assignment-scheduler-api</app>
+                <app>bip-nwq-executor</app>
+                <app>bip-nwq-historian-api</app>
+                <app>bip-nwq-historian-ui</app>
+                <app>bip-nwq-redshift-data-sp</app>
+                <app>bip-nwq-reporting-sp</app>
+                <app>bip-vbms-wmc-home-ui</app>
+                <app>bip-vbms-wmc-reference-data-ui</app>
+                <app>bip-vbms-wmc-root-ui</app>
+                <app>bip-vbms-wmc-schedules-ui</app>
+                <app>bip-vbms-wmc-wmf-modeler-ui</app>
+                <app>bip-wm-decision-definition-api</app>
+                <app>bip-work-queue-capacity-management-api</app>
+                <app>bip-work-queue-capacity-management-ui</app>
+                <app>bip-work-queue-nwq-apb</app>
+                <app>bip-work-queue-nwq-assignment-scheduler</app>
+                <app>bip-work-queue-nwq-group-builder</app>
+                <app>bip-work-queue-actions-ui</app>
+                <app>bip-work-queue-command</app>
+                <app>bip-work-queue-query</app>
+                <app>bip-work-queue-ui</app>
+                <app>work-queue-projector</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-workqueue</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>VBMS Correspondence (VBMSC)</system_name>
+            <vasi>3008</vasi>
+            <emass_id>2066</emass_id>
+            <emass_system_name>VBMS Correspondence</emass_system_name>
+            <msr>2405</msr>
+            <bih>VBMS Correspondence</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>VBMSC 4+1 Design</other_documentation>
+            <dodaf>VBMS Correspondence</dodaf>
+            <pocs>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Doug James</name>
+                    <role>Letters and Documents ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vbmsc</app>
+            </tenant_apps>
+            <gui_links>
+                <link>Webrunner: https://github.com/department-of-veterans-affairs/vbms-correspondence/tree/development/VBMS_Correspondence_Test/vbmsc-test</link>
+            </gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>VA Schedule for Rating Disabilities (VASRD)</system_name>
+            <vasi>3009</vasi>
+            <emass_id>2065</emass_id>
+            <emass_system_name>VA Schedule for Ratings Disabilities</emass_system_name>
+            <msr>2406</msr>
+            <bih>VA Schedule for Rating Disabilities</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>zArchive - VASRD 4+1 Design</other_documentation>
+            <dodaf>VA Schedule for Ratings Disabilities</dodaf>
+            <pocs>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Missy Allen</name>
+                    <role>Ratings ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vasrd</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Federal Tax Information File Repository (FFR)</system_name>
+            <vasi>3014</vasi>
+            <emass_id>2057</emass_id>
+            <emass_system_name>Federal Tax Information File Repository</emass_system_name>
+            <msr>2412</msr>
+            <bih>FTI File Repo</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>zArchive - FTI File Repository (FFR) 4+1 Design</other_documentation>
+            <dodaf>FTI Services</dodaf>
+            <pocs>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Doug James</name>
+                    <role>Letters and Documents ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-fti-file-repo</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel>bip-support-fti-file-repo</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Federal Tax Information Capture (FTI Capture)</system_name>
+            <vasi>3015</vasi>
+            <emass_id>2055</emass_id>
+            <emass_system_name>Federal Tax Information Capture</emass_system_name>
+            <msr>2413</msr>
+            <bih>FTI Capture</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>zArchive - FTI Capture 4+1 Design</other_documentation>
+            <dodaf>FTI Services</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-fti-capture</app>
+                <app>bip-fti-capture-ui</app>
+            </tenant_apps>
+            <gui_links>https://fti-capture-ui-dev.dev.bip.va.gov/</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Veteran Enterprise File Storage - Claim Evidence (VEFS)</system_name>
+            <vasi>3023</vasi>
+            <emass_id>2064</emass_id>
+            <emass_system_name>Claim Evidence</emass_system_name>
+            <msr>2421</msr>
+            <bih>VEFS Claim Evidence</bih>
+            <documentation_status>Final</documentation_status>
+            <submission_date>2025-01</submission_date>
+            <other_documentation>zArchive - Claim Evidence API 4+1 Design</other_documentation>
+            <dodaf>Veteran Enterprise File Storage Claim Evidence</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Nick Kraftor</name>
+                    <role>Claim Evidence Smart Search and Integrations ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vefs-claimevidence</app>
+                <app>bip-vefs-claimevidence-ui</app>
+                <app>bip-vefs-ce-event-consumer-sp</app>
+                <app>bip-vefs-claimevidence-ocr-list-processor</app>
+            </tenant_apps>
+            <gui_links>https://vefs-claimevidence-ui-dev.dev.bip.va.gov/</gui_links>
+            <slack_channel>bip-support-claimevidence</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Data Synchronization (Data Sync)</system_name>
+            <vasi>3025</vasi>
+            <emass_id>2050</emass_id>
+            <emass_system_name>Data Synchronization</emass_system_name>
+            <msr>2422</msr>
+            <bih>Data Synchronization</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>Data Sync 4+1 Design</other_documentation>
+            <dodaf>Data Synchronization</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-data-synchronization-bgsclaim</app>
+                <app>bip-data-synchronization-bgsperson</app>
+                <app>bip-data-synchronization-bgssyncid</app>
+                <app>bip-data-synchronization-claim</app>
+                <app>bip-data-synchronization-claim-processor</app>
+                <app>bip-data-synchronization-person</app>
+                <app>bip-data-synchronization-person-processor</app>
+                <app>bip-data-synchronization-syncid</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>VBMS Fiduciary (FID)</system_name>
+            <vasi>3026</vasi>
+            <emass_id>2044</emass_id>
+            <emass_system_name>VBMS-Fiduciary</emass_system_name>
+            <msr>2423</msr>
+            <bih>VBMS Fiduciary</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>FID 4+1 Design</other_documentation>
+            <dodaf>VBMS-Fiduciary</dodaf>
+            <pocs>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Stephanie Riani</name>
+                    <role>Fiduciary ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-bffs</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Compensation and Pension UI (CPUI)</system_name>
+            <vasi>3028</vasi>
+            <emass_id>2049</emass_id>
+            <emass_system_name>BIP Compensation and Pension User Interface</emass_system_name>
+            <msr>2429</msr>
+            <bih>Compensation and Pension UI</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>CPUI 4+1 Design</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Ashlyn Boserup</name>
+                    <role>MRRC ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Lee Morris</name>
+                    <role>DBQ ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Chris Gibson</name>
+                    <role>AI/ML ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Katrina Mack</name>
+                    <role>Modernization Documentation ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Morgan Ryan</name>
+                    <role>UI Modernization ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-archetype-ui-mfe-app</app>
+                <app>bip-cpui-mfe-styleguide-util</app>
+                <app>bip-mfe-auth-util</app>
+                <app>bip-vbms-header-ui</app>
+                <app>bip-vbms-root-ui</app>
+                <app>bip-cpui-feedback-api</app>
+                <app>bip-cpui-feedback-dashboard-ui</app>
+                <app>bip-cpui-feedback-survey-ui</app>
+                <app>bip-cpui-feedback-survey-ui-root</app>
+                <app>bip-cpui-feedback-ui-root</app>
+                <app>bip-cpui-tera-memo-ui</app>
+                <app>bip-cpui-user-permissions-api</app>
+                <app>bip-cpui-vbms-chatbot-ui</app>
+                <app>bip-cpui-vbms-training-hub-ahd</app>
+                <app>bip-cpui-vbms-training-hub-api</app>
+                <app>bip-cpui-vbms-training-hub-ui</app>
+                <app>bip-ida-admin-ui</app>
+                <app>bip-idb-oda-ui</app>
+                <app>bip-sdg-ui</app>
+                <app>bip-str-assist-ui</app>
+                <app>bip-veteran-summary-panel-ui</app>
+                <app>bip-cpui-veteran-summary-panel-mfe-parcel-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-mfe</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Exam Destination (Exam Dest)</system_name>
+            <vasi>3032</vasi>
+            <emass_id>2052</emass_id>
+            <emass_system_name>VBMS Exam Destination</emass_system_name>
+            <msr>2428</msr>
+            <bih>Exam Destination</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>Exam Dest 4+1 Design</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Margaret Paraschos</name>
+                    <role>Exam Management ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-exam-destination</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>FTI Document Generator (FTI DocGen)</system_name>
+            <vasi>3057</vasi>
+            <emass_id>2266</emass_id>
+            <emass_system_name>FTI Document Generator</emass_system_name>
+            <msr>2454</msr>
+            <bih>FTI DocGen</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>zArchive - FTI DocGen 4+1 Design</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Doug James</name>
+                    <role>Letters and Documents ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Ellen McCarthy</name>
+                    <role>ADG ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-docgen-svc</app>
+                <app>bip-docgen-adg-svc</app>
+                <app>bip-docgen-genstore</app>
+                <app>bip-docgen-letters-svc</app>
+                <app>bip-docgen-letters-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Veteran Deployment Service (VetDep)</system_name>
+            <vasi>3223</vasi>
+            <emass_id>2319</emass_id>
+            <emass_system_name>Veteran Deployment Services</emass_system_name>
+            <msr>2618</msr>
+            <bih>Veteran Deployment Service</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Hannah Durant</name>
+                    <role>VBMS Enhancements ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps />
+            <gui_links>N/A</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Dynamic Medical Data Transformer (DMDT)</system_name>
+            <vasi>3224</vasi>
+            <emass_id>2326</emass_id>
+            <emass_system_name>Dynamic Medical Data Transformer</emass_system_name>
+            <msr>2619</msr>
+            <bih>Dynamic Medical Data Transformer</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>DMDT</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Lee Morris</name>
+                    <role>DBQ ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-dmdt</app>
+                <app>bip-dmdt-ui</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel>bip-support-dmdt</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>VBMS Ratings (VBMSR)</system_name>
+            <vasi>3233</vasi>
+            <emass_id>2167</emass_id>
+            <emass_system_name>BIP VBMS Ratings</emass_system_name>
+            <msr>2629</msr>
+            <bih>VBMS Ratings</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>VBMS Ratings DRA 4+1 Design</other_documentation>
+            <dodaf>DRA</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Ashlyn Boserup</name>
+                    <role>MRRC ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Missy Allen</name>
+                    <role>Ratings ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vbms-ratings-legacy</app>
+                <app>bip-rre</app>
+                <app>bip-ratings-svc</app>
+                <app>bip-ratings-ui-root</app>
+                <app>bip-ratings-ui-home</app>
+                <app>bip-dra-admin-api</app>
+                <app>bip-dra-admin-ui</app>
+                <app>bip-dra-api</app>
+                <app>bip-dra-claim-streams-app</app>
+                <app>bip-dra-csi-streams-app</app>
+                <app>bip-dra-decision-api</app>
+                <app>bip-dra-flash-streams-app</app>
+                <app>bip-dra-ui</app>
+                <app>bip-rating-api</app>
+                <app>bip-ratings-dra-root-ui</app>
+                <app>bip-ratings-file-repo-api</app>
+                <app>bip-ratings-file-repo-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-vbms-ratings</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Claim Establishment (CEST)</system_name>
+            <vasi>3263</vasi>
+            <emass_id>2334</emass_id>
+            <emass_system_name>Claim Establishment</emass_system_name>
+            <msr>2657</msr>
+            <bih>Claim Establishment</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Allie Burrier</name>
+                    <role>Appeals & VERA ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-cest-ui</app>
+                <app>bip-cest-api</app>
+                <app>cest-camunda</app>
+            </tenant_apps>
+            <gui_links>https://cest-ui-dev.dev.bip.va.gov/</gui_links>
+            <slack_channel>bip-support-cest</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Printing of Unidentified Records (PUR)</system_name>
+            <vasi>3265</vasi>
+            <emass_id>2328</emass_id>
+            <emass_system_name>Printing of Unidentified Records</emass_system_name>
+            <msr>2661</msr>
+            <bih>Printing of Unidentified Records</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Ron Taylor</name>
+                    <role>Claims Automation ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-pur</app>
+                <app>bip-pur-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-pur</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>Disability Benefits Questionnaire (DBQ)</system_name>
+            <vasi>3268</vasi>
+            <emass_id>2382</emass_id>
+            <emass_system_name>DBQ</emass_system_name>
+            <msr>2662</msr>
+            <bih>DBQ</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Jud Drinker</name>
+                    <role>DBQ API ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-dbq-portal</app>
+                <app>bip-dbq-portal-web-services</app>
+                <app>bip-dbq-portal-web-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-dbq-portal</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>DBQ Content Management Tool (DBQ CMT)</system_name>
+            <vasi>3279</vasi>
+            <emass_id>2387</emass_id>
+            <emass_system_name>DBQ Content Management Tool</emass_system_name>
+            <msr>2672</msr>
+            <bih>DBQ CMT</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Thomas Moorer</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Margaret Paraschos</name>
+                    <role>DBQ CMT ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-dbq-cmt</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Smart OCR (SOCR)</system_name>
+            <vasi>3335</vasi>
+            <emass_id>2469</emass_id>
+            <emass_system_name>Smart OCR</emass_system_name>
+            <msr>2726</msr>
+            <bih>Smart OCR</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Kristin Froes</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Nick Kraftor</name>
+                    <role>Claim Evidence Smart Search and Integrations ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-socr-smart-scan-api</app>
+            </tenant_apps>
+            <gui_links>N/A</gui_links>
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>VBMS Awards (VBMSA)</system_name>
+            <vasi>3354</vasi>
+            <emass_id>2488</emass_id>
+            <emass_system_name>VBMS Awards</emass_system_name>
+            <msr>2737</msr>
+            <bih>VBMS Awards</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Mike McEvoy</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Brian Williams</name>
+                    <role>Awards ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vbms-awards-legacy</app>
+                <app>bip-vbms-awards-api</app>
+                <app>bip-vbms-awards-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel>bip-support-vbms-awards</slack_channel>
+        </tenant>
+        <tenant>
+            <system_name>VBMS Core (VBMSCore)</system_name>
+            <vasi>3356</vasi>
+            <emass_id>2490</emass_id>
+            <emass_system_name>VBMS Core</emass_system_name>
+            <msr>2738</msr>
+            <bih>VBMS Core</bih>
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>N/A</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Rachel Ankrapp</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Matthew Brown</name>
+                    <role>VETSNET Modernization ART RTE</role>
+                </poc>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Maddie Eastmer</name>
+                    <role>Core ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-vbms-core-legacy</app>
+                <app>bip-contention-ui</app>
+                <app>bip-vbms-core-vet-info-profile-svc</app>
+                <app>bip-vbms-core-vet-info-profile-ui</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+        <tenant>
+            <system_name>Services Resiliency Integration (SRI)</system_name>
+            <vasi>3473</vasi>
+            <emass_id>2661</emass_id>
+            <emass_system_name>Services Resiliency Integration</emass_system_name>
+            <msr />
+            <bih />
+            <documentation_status>Draft</documentation_status>
+            <submission_date />
+            <other_documentation>Solution Document</other_documentation>
+            <dodaf>N/A</dodaf>
+            <pocs>
+                <poc>
+                    <name>Marquita Frazier</name>
+                    <role>STE</role>
+                </poc>
+                <poc>
+                    <name>Greg Eastmer</name>
+                    <role>Solution ART RTE</role>
+                </poc>
+            </pocs>
+            <tenant_apps>
+                <app>bip-&lt;namespace&gt;</app>
+            </tenant_apps>
+            <gui_links />
+            <slack_channel />
+        </tenant>
+    </tenants>
+</vbms_architecture>
+```

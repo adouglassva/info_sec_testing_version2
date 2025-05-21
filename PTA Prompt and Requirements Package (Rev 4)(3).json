@@ -1,0 +1,849 @@
+{
+  "metadata": {
+    "version": "1.4.0",
+    "title": "PTA Prompt and Requirements Package (Rev 4)",
+    "purpose": "Guide an LLM (e.g., GitHub Copilot) to generate a complete Privacy Threshold Agreement (PTA) for a specified VBMS system, prioritizing VBMS_Architecture_Dependency.xml, ensuring accurate data, minimizing steward input, and embedding initiator signature (AMBoserup).",
+    "usage": "Upload this JSON with VBMS_Architecture_Dependency.xml. Prompt the steward for the target system, confirm artifact URLs, extract data, and generate a complete PTA in .txt format.",
+    "sources": [
+      "VBMS_Architecture_Dependency.xml",
+      "System Architecture Confluence page (URL or PDF)",
+      "GitHub repository (URL)",
+      "Partial PTA draft (e.g., PTA_Package_Manager_FY25.txt)",
+      "System steward input (only for critical missing data)",
+      "VBMSC_Privacy_Threshold_Analysis_(PTA).pdf (for examples)"
+    ],
+    "date_created": "2025-05-21",
+    "template_reference": "FY25StandardPTATemplate.docx",
+    "wip_status": "Work in Progress, updated to fix incomplete output, incorrect data, and PacMan misuse",
+    "initiator_signature": "AMBoserup"
+  },
+  "instructions": {
+    "overview": "You are an LLM (e.g., GitHub Copilot) tasked with generating a complete Privacy Threshold Agreement (PTA) for a specified VBMS system, adhering to the FY25 Standard PTA Template. Prompt the steward for the target system, validate it against VBMS_Architecture_Dependency.xml, extract data from XML/Confluence/GitHub/partial drafts, use VBMSC examples for gaps, and minimize steward input. Complete all sections, embedding the initiator’s signature (AMBoserup).",
+    "guardrails": [
+      {
+        "rule": "System Selection Validation",
+        "description": "Prompt for the target system and validate against VBMS_Architecture_Dependency.xml. If invalid, provide a list of valid systems (e.g., Package Manager (PacMan), VBMS Correspondence)."
+      },
+      {
+        "rule": "Prioritize XML Dependency",
+        "description": "Extract system-specific data (e.g., eMASS ID, POCs, program office) from VBMS_Architecture_Dependency.xml first, then cross-check with Confluence, GitHub, and partial PTA drafts."
+      },
+      {
+        "rule": "Prevent Data Misuse",
+        "description": "Lock data extraction to the selected system’s XML entry. Log and prompt if non-system data (e.g., PacMan for VBMS Correspondence) is detected."
+      },
+      {
+        "rule": "Maximize Artifact Extraction",
+        "description": "Extract all data from XML (e.g., POCs, eMASS ID), Confluence (architecture, connections), GitHub (tech stack, data models), and partial PTA drafts before prompting."
+      },
+      {
+        "rule": "Complete All Sections",
+        "description": "Generate a full PTA with sections 1–3, Review, and Signatures, using placeholders for unresolvable fields. Verify completeness before output."
+      },
+      {
+        "rule": "Minimize Prompts",
+        "description": "Batch prompts for missing data (e.g., PIA approval date, contact emails) into one request per section. Use XML defaults to avoid unnecessary prompts."
+      },
+      {
+        "rule": "Clear Guidance",
+        "description": "Prompts include VBMSC PTA examples, source suggestions (e.g., 'Check XML POCs'), and review instructions for placeholders."
+      }
+    ],
+    "initiation": {
+      "step": "System Selection and Artifact Requests",
+      "description": "Prompt for the target system and confirm/provide artifact URLs.",
+      "prompts": [
+        {
+          "id": "system_selection",
+          "text": "Please specify the VBMS system for the PTA (e.g., 'Package Manager (PacMan)', 'VBMS Correspondence').",
+          "validation": "Validate against VBMS_Architecture_Dependency.xml. If invalid, prompt: 'System not found. Please select from: Package Manager (PacMan), VBMS Correspondence, Document Generator, etc.'"
+        },
+        {
+          "id": "confluence_url",
+          "text": "Confirm or provide the System Architecture Confluence page URL (e.g., https://confluence.devops.va.gov/display/VAExternal/2993_Package+Manager+Architecture) or upload a PDF export.",
+          "validation": "If inaccessible, prompt: 'Confluence URL is invalid. Provide a valid URL or PDF export.'"
+        },
+        {
+          "id": "github_url",
+          "text": "Confirm or provide the GitHub repository URL (e.g., https://github.com/department-of-veterans-affairs/bip-pacman-service).",
+          "validation": "If invalid, prompt: 'GitHub URL is invalid. Provide a valid repository URL.'"
+        },
+        {
+          "id": "partial_pta",
+          "text": "Provide any partial PTA draft or additional documentation (e.g., PTA_Package_Manager_FY25.txt, architecture diagrams) as URLs or files (.txt, .pdf).",
+          "validation": "Acceptable formats: .txt, .pdf, GitHub URLs."
+        }
+      ]
+    },
+    "process_flow": [
+      {
+        "step": 1,
+        "description": "Validate the selected system against VBMS_Architecture_Dependency.xml. Extract system-specific data (e.g., eMASS ID, POCs, program office)."
+      },
+      {
+        "step": 2,
+        "description": "Extract additional data from Confluence (architecture, connections), GitHub (tech stack, data models), and partial PTA drafts. Cross-check for consistency and log discrepancies."
+      },
+      {
+        "step": 3,
+        "description": "For missing data, use XML defaults or VBMSC PTA examples, marking as 'place holder (review required)'. Batch prompts for critical gaps (e.g., contact emails, PIA approval date)."
+      },
+      {
+        "step": 4,
+        "description": "Generate a complete PTA in .txt format, including all sections, initiator’s signature (AMBoserup), placeholders with review instructions, and a review checklist."
+      }
+    ],
+    "input_guidelines": {
+      "formats": ["plain text", ".txt", ".pdf"],
+      "validation": "Ensure URLs are accessible and files are machine-readable. Use VA-approved environments for sensitive data (e.g., PII, PHI).",
+      "prompt_handling": "Batch prompts into one request per section. Include VBMSC PTA examples and source suggestions (e.g., 'Check XML POCs')."
+    },
+    "output_format": {
+      "description": "Generate a .txt file with the complete PTA, structured per the FY25 Standard PTA Template. Include all sections, initiator’s signature (AMBoserup), placeholders with review instructions, and a review checklist.",
+      "example_structure": "# Privacy Threshold Agreement (PTA)\n## 1 - Information System and Project Information\n1.1 Date: [Filled]\n...\n## Approval Signatures\nInitiator: AMBoserup\n...\n## Review Checklist\n- Verify placeholders\n- Coordinate signatures"
+    },
+    "troubleshooting": [
+      {
+        "issue": "System not found in XML",
+        "solution": "Prompt with a list of valid systems from VBMS_Architecture_Dependency.xml."
+      },
+      {
+        "issue": "Inaccessible URLs",
+        "solution": "Prompt for PDF exports or GitHub files (e.g., README.md)."
+      },
+      {
+        "issue": "Missing data",
+        "solution": "Use XML defaults or VBMSC PTA examples, mark as 'place holder (review required)', and list in the review checklist."
+      },
+      {
+        "issue": "Incorrect data (e.g., PacMan misuse)",
+        "solution": "Log mismatch and prompt: 'Data for [system] detected for [selected_system]. Confirm correct system.'"
+      },
+      {
+        "issue": "Incomplete output",
+        "solution": "Verify all sections are generated, using placeholders if necessary. Cross-check with FY25 template."
+      }
+    ],
+    "requirements": [
+      {
+        "section": "1 - Information System and Project Information",
+        "fields": [
+          {
+            "id": "1.1",
+            "name": "Date PTA Submitted to PIA Support for Review",
+            "description": "Date of PTA submission.",
+            "input_format": "Date (MM/DD/YYYY)",
+            "mandatory": true,
+            "default": "2025-05-21",
+            "example": "4/12/2025",
+            "sources": ["System steward input", "Partial PTA draft"],
+            "prompt": "Confirm the PTA submission date (default: 2025-05-21, e.g., 4/12/2025)."
+          },
+          {
+            "id": "1.2a",
+            "name": "Name of the IT System or Project",
+            "description": "System name as in eMASS.",
+            "input_format": "Text",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml",
+            "example": "Package Manager (PacMan)",
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence overview", "GitHub README", "Partial PTA draft"],
+            "prompt": "System name extracted as [system_name]. Confirm or provide correct name (e.g., Package Manager (PacMan))."
+          },
+          {
+            "id": "1.2b",
+            "name": "Former System Name (from Last PTA)",
+            "description": "Previous system name, if applicable.",
+            "input_format": "Text or 'N/A'",
+            "mandatory": true,
+            "default": "N/A",
+            "example": "N/A",
+            "sources": ["Previous PTA", "Partial PTA draft"],
+            "prompt": "Confirm the former system name (default: N/A)."
+          },
+          {
+            "id": "1.3",
+            "name": "eMASS ID #",
+            "description": "eMASS identifier.",
+            "input_format": "Numeric or alphanumeric",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml",
+            "example": "2061",
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence", "Partial PTA draft"],
+            "prompt": "Confirm the eMASS ID (default: [emass_id], e.g., 2061). Check XML or Confluence."
+          },
+          {
+            "id": "1.3b",
+            "name": "Artificial Intelligence (AI) Usage",
+            "description": "Whether the system uses AI.",
+            "input_format": "Boolean",
+            "mandatory": true,
+            "default": false,
+            "example": false,
+            "sources": ["Confluence architecture", "GitHub code/docs", "Partial PTA draft"],
+            "prompt": "Confirm if the system uses AI (default: False). Check Confluence architecture or GitHub code."
+          },
+          {
+            "id": "1.4",
+            "name": "VA Administration/Offices Processing the PTA",
+            "description": "VA administration(s) processing the PTA.",
+            "input_format": "Array of strings",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml (administration)",
+            "example": ["VBA"],
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence overview", "Partial PTA draft"],
+            "prompt": "Confirm the VA administration (default: [administration], e.g., VBA). Options: VHA, VBA, NCA, VACO."
+          },
+          {
+            "id": "1.4a",
+            "name": "Data Owners in This System",
+            "description": "Data owners with specific offices.",
+            "input_format": "Object",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml (data_owners)",
+            "example": {"VBA": "List of VBA Offices"},
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence ownership", "Partial PTA draft"],
+            "prompt": "Confirm data owners (default: [data_owners], e.g., VBA: List of VBA Offices). Specify offices if known."
+          },
+          {
+            "id": "1.5",
+            "name": "Program Office",
+            "description": "Sponsoring program office.",
+            "input_format": "Text",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml (program_office)",
+            "example": "Compensation and Pension",
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence overview", "Partial PTA draft"],
+            "prompt": "Confirm the program office (default: [program_office], e.g., Compensation and Pension)."
+          },
+          {
+            "id": "1.5.1",
+            "name": "System Ownership/Control",
+            "description": "Ownership/control model.",
+            "input_format": "String",
+            "mandatory": true,
+            "default": "Extract from VBMS_Architecture_Dependency.xml (ownership_control)",
+            "example": "VA Owned and VA Operated",
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence architecture", "Partial PTA draft"],
+            "prompt": "Confirm the ownership model (default: [ownership_control], e.g., VA Owned and VA Operated). Options: VA Partnership, VA Owned and VA Operated, VA Owned and non-VA Operated, VA Controlled / non-VA Owned and Operated."
+          },
+          {
+            "id": "contacts",
+            "name": "IT System and Project Contacts",
+            "description": "Contact information for key roles.",
+            "input_format": "Array of objects",
+            "mandatory": true,
+            "default": [
+              {
+                "title": "Privacy Officer",
+                "name": "place holder (review required)",
+                "email": "place holder (review required)",
+                "phone": "place holder (review required)",
+                "signature_required": true
+              },
+              {
+                "title": "Information System Security Officer",
+                "name": "place holder (review required)",
+                "email": "place holder (review required)",
+                "phone": "place holder (review required)",
+                "signature_required": true
+              },
+              {
+                "title": "Information System Owner",
+                "name": "Extract from VBMS_Architecture_Dependency.xml (POCs)",
+                "email": "Extract from VBMS_Architecture_Dependency.xml or place holder (review required)",
+                "phone": "place holder (review required)",
+                "signature_required": true
+              },
+              {
+                "title": "Data/Business/Information Owner",
+                "name": "Extract from VBMS_Architecture_Dependency.xml (POCs)",
+                "email": "place holder (review required)",
+                "phone": "place holder (review required)",
+                "signature_required": false
+              }
+            ],
+            "example": [
+              {
+                "title": "Privacy Officer",
+                "name": "Marvis Harvey",
+                "email": "Marvis.Harvey@va.gov",
+                "phone": "314-964-5469",
+                "signature_required": true
+              },
+              {
+                "title": "Information System Owner",
+                "name": "Kristin Froes",
+                "email": "place holder (review required)",
+                "phone": "place holder (review required)",
+                "signature_required": true
+              }
+            ],
+            "sources": ["VBMS_Architecture_Dependency.xml (POCs)", "Confluence team contacts", "VA directory", "Partial PTA draft"],
+            "prompt": "Provide contact details for Privacy Officer, ISSO, ISO, and Data Owner (e.g., Privacy Officer: Marvis Harvey, Marvis.Harvey@va.gov, 314-964-5469). XML POCs: [list POCs]. Check VA directory or Confluence. Default: place holder (review required)."
+          },
+          {
+            "id": "status",
+            "name": "Status of IT System and Project",
+            "description": "System status and PIA details.",
+            "input_format": "Object",
+            "mandatory": true,
+            "default": {
+              "status": "Existing with PIA",
+              "pia_approval_date": "place holder (review required)"
+            },
+            "example": {
+              "status": "Existing with PIA",
+              "pia_approval_date": "6/1/2022"
+            },
+            "sources": ["Confluence status", "Previous PTA", "Partial PTA draft"],
+            "prompt": "Confirm status (default: Existing with PIA) and provide PIA approval date (e.g., 6/1/2022). Options: New, Existing without PIA, Existing with PIA, Decommissioned, Non-operational."
+          },
+          {
+            "id": "1.7",
+            "name": "System Categorization",
+            "description": "Major or minor system categorization.",
+            "input_format": "Object",
+            "mandatory": true,
+            "default": {
+              "category": "Minor",
+              "major_system_name": "Veterans Benefits Management System (VBMS)",
+              "major_system_emass_id": "1021"
+            },
+            "example": {
+              "category": "Minor",
+              "major_system_name": "Benefits Integration Platform (BIP)",
+              "major_system_emass_id": "136"
+            },
+            "sources": ["VBMS_Architecture_Dependency.xml", "Confluence architecture", "Partial PTA draft"],
+            "prompt": "Confirm categorization (default: Minor, augmenting VBMS, eMASS ID 1021). Provide major system details if different."
+          },
+          {
+            "id": "1.8",
+            "name": "Type of Model Used",
+            "description": "Service model.",
+            "input_format": "String",
+            "mandatory": true,
+            "default": "Not Applicable",
+            "example": "Not Applicable",
+            "sources": ["Confluence architecture", "GitHub deployment", "Partial PTA draft"],
+            "prompt": "Confirm the service model (default: Not Applicable). Options: SaaS, PaaS, IaaS, DaaS, MBaaS, ITMaaS, Not Applicable."
+          },
+          {
+            "id": "1.9",
+            "name": "Type of Information Contained",
+            "description": "Whether VA data is processed.",
+            "input_format": "String",
+            "mandatory": true,
+            "default": "Yes",
+            "example": "Yes",
+            "sources": ["Confluence data types", "GitHub data docs", "Partial PTA draft"],
+            "prompt": "Confirm if VA data is processed (default: Yes)."
+          },
+          {
+            "id": "1.10",
+            "name": "PII Confidentiality Impact Level",
+            "description": "PII impact level in eMASS.",
+            "input_format": "String",
+            "mandatory": false,
+            "default": "Moderate",
+            "example": "Moderate",
+            "sources": ["eMASS records", "Confluence security", "Partial PTA draft"],
+            "prompt": "Confirm the PII impact level (default: Moderate). Options: Low, Moderate, High."
+          }
+        ]
+      },
+      {
+        "section": "2 - Annual PTA Validation Process",
+        "condition": "Skip if new PTA or decommissioned",
+        "fields": [
+          {
+            "id": "2.1",
+            "name": "Annual Validation Status",
+            "description": "Major changes or PIA update status.",
+            "input_format": "Array of objects",
+            "mandatory": true,
+            "default": [
+              {
+                "status": "No major changes"
+              }
+            ],
+            "example": [
+              {
+                "status": "No major changes but PIA needs update"
+              }
+            ],
+            "sources": ["Confluence change logs", "GitHub release notes", "Partial PTA draft"],
+            "prompt": "Confirm validation status (default: No major changes). Options: Major changes, No major changes, No major changes but PIA needs update. Provide change details if applicable."
+          }
+        ]
+      },
+      {
+        "section": "3 - Privacy Threshold Analysis Questions",
+        "fields": [
+          {
+            "id": "3.1",
+            "name": "System Description",
+            "description": "Layman’s description of system operations.",
+            "input_format": "Text (paragraph)",
+            "mandatory": true,
+            "default": "Extract from Confluence overview, GitHub README, or Partial PTA draft; otherwise, use VBMSC example",
+            "example": "The Package Manager Service is a component of the Veterans Benefits Management System (VBMS) responsible for managing, orchestrating, and processing packages of documents and data related to veterans’ benefits claims...",
+            "sources": ["Confluence overview", "GitHub README", "Partial PTA draft"],
+            "prompt": "Confirm the system description (default: [extracted description]). Edit if needed, referencing Confluence overview or GitHub README."
+          },
+          {
+            "id": "3.2",
+            "name": "Technologies Employed",
+            "description": "System technologies.",
+            "input_format": "Array of strings",
+            "mandatory": true,
+            "default": ["Cloud Computing"],
+            "example": ["Cloud Computing", "Web Portal Internal", "REST APIs", "Red Hat Enterprise Linux (RHEL) 7.x"],
+            "sources": ["Confluence architecture", "GitHub tech stack", "VBMS_Architecture_Dependency.xml (tenant apps)", "Partial PTA draft"],
+            "prompt": "Confirm technologies (default: Cloud Computing). Options: Cloud Computing, Web Portal Internal, Web Portal External, SharePoint, Closed Circuit TV, Social Media, Mobile Devices/Applications, Applications, Robotic Process Automation, Other, Not Applicable. Check XML tenant apps or GitHub tech stack."
+          },
+          {
+            "id": "3.3",
+            "name": "Data Stored in the Cloud",
+            "description": "Whether data is cloud-stored.",
+            "input_format": "Boolean",
+            "mandatory": true,
+            "default": true,
+            "example": true,
+            "sources": ["Confluence architecture", "GitHub deployment", "Partial PTA draft"],
+            "prompt": "Confirm if data is stored in the cloud (default: True)."
+          },
+          {
+            "id": "3.3.1",
+            "name": "Cloud Service Provider Details",
+            "description": "Cloud provider details.",
+            "input_format": "Array of objects",
+            "mandatory": false,
+            "condition": "Required if 3.3 is true",
+            "default": [
+              {
+                "csp_name": "VAEC AWS Government",
+                "agreement_in_place": true,
+                "agreement_description": "place holder (review required)",
+                "fedramp_approved": true
+              }
+            ],
+            "example": [
+              {
+                "csp_name": "VAEC AWS Government",
+                "agreement_in_place": true,
+                "agreement_description": "Contract # NNG15SD22B VA118-17-F-2284",
+                "fedramp_approved": true
+              }
+            ],
+            "sources": ["Confluence cloud architecture", "Partial PTA draft"],
+            "prompt": "Confirm cloud provider details (default: VAEC AWS Government, placeholder contract). Provide actual contract number if known."
+          },
+          {
+            "id": "3.4",
+            "name": "Collection of Individual Information",
+            "description": "Whether individual information is collected.",
+            "input_format": "Object",
+            "mandatory": true,
+            "default": {
+              "collects_individual_info": true
+            },
+            "example": {
+              "collects_individual_info": true
+            },
+            "sources": ["Confluence data types", "GitHub data docs", "Partial PTA draft"],
+            "prompt": "Confirm if individual information is collected (default: True)."
+          },
+          {
+            "id": "3.4.1",
+            "name": "PII/PHI Data Collected",
+            "description": "PII/PHI data elements by category.",
+            "input_format": "Array of objects",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": [
+              {
+                "category": "Veterans or Dependents",
+                "applicable": true,
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address"
+                ]
+              },
+              {
+                "category": "VA Employees",
+                "applicable": false,
+                "data_elements": []
+              },
+              {
+                "category": "VA Contractors",
+                "applicable": false,
+                "data_elements": []
+              },
+              {
+                "category": "Members of the Public/Individuals",
+                "applicable": false,
+                "data_elements": []
+              },
+              {
+                "category": "Volunteers",
+                "applicable": false,
+                "data_elements": []
+              },
+              {
+                "category": "Clinical Trainees",
+                "applicable": false,
+                "data_elements": []
+              }
+            ],
+            "example": [
+              {
+                "category": "Veterans or Dependents",
+                "applicable": true,
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address",
+                  "Power of Attorney and Fiduciary",
+                  "USI metadata"
+                ]
+              }
+            ],
+            "sources": ["Confluence data types", "GitHub data models", "Partial PTA draft"],
+            "prompt": "Confirm PII/PHI data elements (default: Veterans: Claimant Name, SSN, etc.). Check Confluence data types or GitHub data models."
+          },
+          {
+            "id": "3.5",
+            "name": "Retrieval by Unique Identifier",
+            "description": "Whether data is retrieved by unique identifier.",
+            "input_format": "Boolean",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": true,
+            "example": true,
+            "sources": ["Confluence data access", "GitHub database schema", "Partial PTA draft"],
+            "prompt": "Confirm if data is retrieved by unique identifier (default: True, e.g., SSN)."
+          },
+          {
+            "id": "3.5.1",
+            "name": "Existing SORN",
+            "description": "Whether a SORN exists.",
+            "input_format": "Object",
+            "mandatory": false,
+            "condition": "Required if 3.5 is true",
+            "default": {
+              "exists": true,
+              "sorn_details": {
+                "number": "58VA21",
+                "title": "Compensation, Pension, Education, and Vocational Rehabilitation and Employment Records-VA",
+                "link": "https://www.oprm.va.gov/docs/SORN/Current_SORN_List_01272023.pdf"
+              },
+              "needs_update": false
+            },
+            "example": {
+              "exists": true,
+              "sorn_details": {
+                "number": "58VA21",
+                "title": "Compensation, Pension, Education, and Vocational Rehabilitation and Employment Records-VA",
+                "link": "https://www.oprm.va.gov/docs/SORN/Current_SORN_List_01272023.pdf"
+              },
+              "needs_update": false
+            },
+            "sources": ["Confluence compliance", "VA OPRM site", "Partial PTA draft"],
+            "prompt": "Confirm SORN details (default: 58VA21, Compensation Records, no update needed). Check VA OPRM site or Confluence compliance."
+          },
+          {
+            "id": "3.6",
+            "name": "Direct Collection from Individuals",
+            "description": "Whether data is collected directly from individuals.",
+            "input_format": "Boolean",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": false,
+            "example": false,
+            "sources": ["Confluence data collection", "GitHub data input", "Partial PTA draft"],
+            "prompt": "Confirm if data is collected directly from individuals (default: False)."
+          },
+          {
+            "id": "3.7",
+            "name": "SSN Collection",
+            "description": "Whether SSNs are collected.",
+            "input_format": "Object",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": {
+              "collects_ssn": true,
+              "alternative_identifier": "ICN, EDIPI, Participant ID"
+            },
+            "example": {
+              "collects_ssn": true,
+              "alternative_identifier": "ICN, EDIPI, Participant ID"
+            },
+            "sources": ["Confluence data types", "GitHub data models", "Partial PTA draft"],
+            "prompt": "Confirm if SSNs are collected (default: True, alternative: ICN, EDIPI)."
+          },
+          {
+            "id": "3.8",
+            "name": "SSN Privacy Enhancing Technologies",
+            "description": "Technologies protecting SSNs.",
+            "input_format": "Object",
+            "mandatory": false,
+            "condition": "Required if 3.7 collects_ssn is true",
+            "default": {
+              "uses_technologies": true,
+              "technologies": ["Encrypted", "Only available to certain users"]
+            },
+            "example": {
+              "uses_technologies": true,
+              "technologies": ["Encrypted", "Only available to certain users"]
+            },
+            "sources": ["Confluence security", "GitHub security config", "Partial PTA draft"],
+            "prompt": "Confirm SSN protection technologies (default: Encrypted, Only available to certain users). Options: Encrypted, Anonymized, Truncated, Partial form, Hidden from all users, Only available to certain users, Not applicable."
+          },
+          {
+            "id": "3.9a",
+            "name": "Internal PII Sharing",
+            "description": "Whether PII is shared internally.",
+            "input_format": "Boolean",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": true,
+            "example": true,
+            "sources": ["Confluence internal connections", "GitHub API docs", "Partial PTA draft"],
+            "prompt": "Confirm if PII is shared internally (default: True)."
+          },
+          {
+            "id": "3.9a.1",
+            "name": "Internal Components Table",
+            "description": "Components sharing PII internally.",
+            "input_format": "Array of objects",
+            "mandatory": false,
+            "condition": "Required if 3.9a is true",
+            "default": [
+              {
+                "component_name": "Extract from VBMS_Architecture_Dependency.xml (tenant_apps) or place holder (review required)",
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address"
+                ]
+              }
+            ],
+            "example": [
+              {
+                "component_name": "Database names not identified in VBMS application interconnection",
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address",
+                  "Power of Attorney and Fiduciary",
+                  "USI metadata"
+                ]
+              }
+            ],
+            "sources": ["Confluence components", "GitHub data models", "VBMS_Architecture_Dependency.xml (tenant_apps)", "Partial PTA draft"],
+            "prompt": "Confirm component names sharing PII (default: [tenant_apps or placeholder]). Confirm data elements (e.g., Claimant Name, SSN). Check XML tenant apps or GitHub data models."
+          },
+          {
+            "id": "3.9b",
+            "name": "Internal VA Sharing",
+            "description": "Internal VA systems sharing PII.",
+            "input_format": "Array of objects",
+            "mandatory": false,
+            "condition": "Required if 3.9a is true",
+            "default": [
+              {
+                "system_name": "VBMS Core, Ratings, and Awards",
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address"
+                ],
+                "transmission_method": "SAML, encryption (place holder (review required))"
+              }
+            ],
+            "example": [
+              {
+                "system_name": "VBMS Core, Ratings, and Awards",
+                "data_elements": [
+                  "Claimant First and Last Name",
+                  "Veteran First and Last Name",
+                  "Date of Birth",
+                  "Social Security Number",
+                  "File Number",
+                  "Personal Mailing Address",
+                  "Power of Attorney and Fiduciary",
+                  "USI metadata"
+                ],
+                "transmission_method": "Specific signing, encryption, and SAML injection techniques"
+              }
+            ],
+            "sources": ["Confluence internal connections", "GitHub API docs", "Partial PTA draft"],
+            "prompt": "Confirm internal systems and transmission method (default: VBMS Core, SAML encryption). Provide details if different."
+          },
+          {
+            "id": "3.10",
+            "name": "External PII/PHI Sharing",
+            "description": "Whether PII/PHI is shared externally.",
+            "input_format": "Object",
+            "mandatory": false,
+            "condition": "Required if 3.4 is true",
+            "default": {
+              "shares_externally": false,
+              "has_agreement": false
+            },
+            "example": {
+              "shares_externally": false,
+              "has_agreement": false
+            },
+            "sources": ["Confluence external connections", "GitHub integration docs", "Partial PTA draft"],
+            "prompt": "Confirm if PII/PHI is shared externally (default: False)."
+          },
+          {
+            "id": "3.10.1",
+            "name": "External Data Sharing Table",
+            "description": "External systems sharing PII/PHI.",
+            "input_format": "Array of objects",
+            "mandatory": false,
+            "condition": "Required if 3.10 shares_externally is true",
+            "default": [],
+            "example": [],
+            "sources": ["Confluence external connections", "GitHub integration docs", "Partial PTA draft"],
+            "prompt": "Provide external systems sharing PII/PHI (default: N/A). Include connection and agreement types if applicable."
+          }
+        ]
+      },
+      {
+        "section": "Privacy Threshold Analysis Review",
+        "note": "Completed by PIA Support, but include defaults for steward review.",
+        "fields": [
+          {
+            "id": "review_date",
+            "name": "Date Reviewed by VA PIA Support Analyst",
+            "description": "Review date by PIA Support.",
+            "input_format": "Date (MM/DD/YYYY)",
+            "mandatory": false,
+            "default": "place holder (review required)",
+            "example": "4/17/2025",
+            "sources": ["System steward input"],
+            "prompt": "Provide the review date, if known (e.g., 4/17/2025). Default: place holder (review required)."
+          },
+          {
+            "id": "analyst_name",
+            "name": "Name of VA PIA Support Analyst",
+            "description": "Analyst’s name.",
+            "input_format": "Text",
+            "mandatory": false,
+            "default": "place holder (review required)",
+            "example": "Bertha Okere-Ford",
+            "sources": ["System steward input"],
+            "prompt": "Provide the analyst’s name, if known (e.g., Bertha Okere-Ford). Default: place holder (review required)."
+          },
+          {
+            "id": "analyst_signature",
+            "name": "VA PIA Support Analyst Signature",
+            "description": "Analyst’s signature.",
+            "input_format": "Signature",
+            "mandatory": false,
+            "default": "place holder (leave for PIA Support)",
+            "example": "Digitally signed by Bertha Okere-Ford",
+            "sources": ["N/A"],
+            "prompt": "Leave blank for PIA Support."
+          },
+          {
+            "id": "determination",
+            "name": "Determination",
+            "description": "Privacy sensitivity status.",
+            "input_format": "Object",
+            "mandatory": false,
+            "default": {
+              "is_privacy_sensitive": true,
+              "comments": "System processes PII, requires PIA update (place holder (review required))"
+            },
+            "example": {
+              "is_privacy_sensitive": true,
+              "comments": "PIA needs to be updated"
+            },
+            "sources": ["Partial PTA draft", "System steward input"],
+            "prompt": "Confirm privacy sensitivity (default: True, PIA update needed). Provide comments if known."
+          },
+          {
+            "id": "analyst_comments",
+            "name": "PIA Support Analyst Comments",
+            "description": "Privacy requirement comments.",
+            "input_format": "Text",
+            "mandatory": false,
+            "default": "The [system_name] is a privacy-sensitive system processing PII for Veterans and dependents. A PIA update is required (place holder (review required)).",
+            "example": "The VBMS Correspondence is a privacy sensitive system that collects, maintains, and/or processes Personally Identifiable Information on Veterans and/or dependents...",
+            "sources": ["Partial PTA draft", "System steward input"],
+            "prompt": "Provide analyst comments, if known (e.g., PII processing details). Default: placeholder (review required)."
+          }
+        ]
+      },
+      {
+        "section": "Privacy Threshold Analysis Approval Signatures",
+        "fields": [
+          {
+            "id": "signatures",
+            "name": "Approval Signatures",
+            "description": "Signatures for approval.",
+            "input_format": "Array of objects",
+            "mandatory": true,
+            "default": [
+              {
+                "role": "Initiator",
+                "signature": "AMBoserup"
+              },
+              {
+                "role": "Privacy Officer",
+                "signature": "place holder (review required)"
+              },
+              {
+                "role": "Information System Security Officer",
+                "signature": "place holder (review required)"
+              },
+              {
+                "role": "Information System Owner",
+                "signature": "place holder (review required)"
+              }
+            ],
+            "example": [
+              {
+                "role": "Initiator",
+                "signature": "AMBoserup"
+              },
+              {
+                "role": "Privacy Officer",
+                "signature": "Digitally signed by Marvis Harvey"
+              }
+            ],
+            "sources": ["System steward coordinates with contacts", "VBMS_Architecture_Dependency.xml (POCs)"],
+            "prompt": "Provide signatures for Privacy Officer, ISSO, and ISO (e.g., Privacy Officer: Digitally signed by Marvis Harvey). Initiator signature (AMBoserup) included. Coordinate with XML POCs ([list POCs]) or VA directory."
+          }
+        ]
+      }
+    ],
+    "review_checklist": [
+      "Verify all 'place holder (review required)' fields (e.g., POCs, SORN details, PIA approval date) using VBMS_Architecture_Dependency.xml, Confluence, GitHub, or VA directory.",
+      "Confirm PII/PHI data elements are consistent across tables (3.4.1, 3.9a.1, 3.9b).",
+      "Coordinate signatures for Privacy Officer, ISSO, and ISO via VA directory or XML POCs.",
+      "Submit to VA PIA Support (piasupport@va.gov) with signed PDF, ensuring analyst signature is included."
+    ]
+}
